@@ -56,6 +56,9 @@ app.use(
 
 app.use("/", require("./routes/homepage"));
 app.use("/", require("./routes/snacks"));
+app.use("/", require("./routes/purchase"));
+
+
 // **************** ROUTES ↑
 
 if (require.main === module) {
