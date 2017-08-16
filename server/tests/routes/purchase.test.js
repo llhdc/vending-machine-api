@@ -14,7 +14,11 @@ describe("Purchase router", () => {
       }).then(snack => {
         return request(app)
           .post("/api/customer/items/126/purchases")
+<<<<<<< HEAD
           .expect(201)
+=======
+          // .expect(200)
+>>>>>>> 65a985ecec4ed0bb4db6241515e644a4bb185c53
       });
     });
 

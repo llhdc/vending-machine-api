@@ -12,7 +12,11 @@ router.post('/api/customer/items/:itemId/purchases', (req, res) => {
   // Snack.findAll()
   // .then(result => {
   //   console.log(result);
+<<<<<<< HEAD
     // res.send(200)
+=======
+    res.send(200)
+>>>>>>> 65a985ecec4ed0bb4db6241515e644a4bb185c53
   // })
   currentCustomer(customer => {
     Snack.findById(parseInt(req.params.itemId))
