@@ -10,9 +10,9 @@ describe('Purchase router', () => {
       .expect(200);
     });
     //
-    // it('allows a customer to purchase an item', () => {
+    // it('allows a customer to purchase an item if they have enough money and quantity > 1', () => {
     //   return request(app)
-    //   .post()
+    //   .post("/api/customer/items/:itemId/purchases")
     //   .expect()
     // });
 
