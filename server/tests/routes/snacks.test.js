@@ -6,15 +6,11 @@ const Snack = db.snack;
 describe("Snack Router", () => {
   describe("GET /api/customer/snacks - get a list of snacks", () => {
     it("has successful status code", () => {
-      return request(app)
-      .get("/api/customer/snacks")
-      .expect(200);
+      return request(app).get("/api/customer/snacks").expect(200);
     });
 
     it("has a status key in json payload", () => {
-      return request(app)
-      .get("/api/customer/snacks")
-      .then(res => {
+      return request(app).get("/api/customer/snacks").then(res => {
         expect(res.body.status).toEqual("success");
       });
     });
@@ -24,11 +20,11 @@ describe("Snack Router", () => {
         description: "Reese's",
         price: 75,
         quantity: 10
-      });
-      return request(app)
-      .get("/api/customer/snacks")
-      .then(res => {
-        expect(res.body.data[0].description).toEqual("Skittles");
+      }).then(snack => {
+        console.log(snack);
+        return request(app).get("/api/customer/snacks").then(res => {
+          expect(res.body.data[0].description).toEqual("Reese's");
+        });
       });
     });
   });
