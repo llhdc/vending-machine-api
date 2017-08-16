@@ -6,6 +6,11 @@ const Customer = db.customer;
 
 
 router.post('/api/customer/items/:itemId/purchases', (req, res) => {
+  // Snack.findAll()
+  // .then(result => {
+  //   console.log(result);
+    res.send(result)
+  // })
   // Snack.findById(parseInt(req.params.itemId))
   // .then(snack => {
   //   console.log(snack);
@@ -31,7 +36,6 @@ router.post('/api/customer/items/:itemId/purchases', (req, res) => {
   //   }
   // })
 
-  res.send('blah')
 });
 
 module.exports = router
