@@ -14,26 +14,59 @@ describe("Purchase router", () => {
       }).then(snack => {
         return request(app)
           .post("/api/customer/items/126/purchases")
-          .expect(200)
+          .expect(201)
       });
     });
 
-    // fit('allows a customer to purchase an item if they have enough money and quantity >= 1', () => {
-    //   return Customer.create({
-    //     cashOnHand: 100
-    //   })
-    //   .then(customer => {
-    //     return Snack.create({
-    //       description: "Reese's",
-    //       price: 75,
-    //       quantity: 10
-    //     })
-    //   })
-    //   return request(app)
-    //   .post("/api/customer/items/:itemId/purchases")
-    //   .then(res => {
-    //     expect(res.body.data[0].quantity).toBeTruthy();
-    //   });
-    // });
+
+
+    it('responds with status:success when customer can purchase item', () => {
+      return Snack.create({ description: "yay", quantity: 5, cost: 20 })
+      .then(snack => {
+        Customer.create({ money: 50 })
+        .then(customer => {
+          request(app)
+          .post(`api/customer/items/${itemId}/purchases`)
+          .then(res = {
+            expect(res.body.status).toBe('success');
+          })
+        })
+      })
+    })
+    })
+
+    it('responds with status:fail when customer has too little money', () => {
+      return Snack.create({ description: "yay", quantity: 5, cost: 20 })
+      .then(snack => {
+        Customer.create({ money: 5 })
+        .then(customer => {
+          request(app)
+          .post(`api/customer/items/${itemId}/purchases`)
+          .then(res = {
+            expect(res.body.status).toBe('fail');
+          })
+        })
+      })
+    })
+
+    it('responds with status:fail when item quantity is zero', () => {
+
+    })
+
+    it('reduces the customer money by the item cost', () => {
+      return Snack.create({description: "yes", quantity: 2, cost: 20})
+      .then(snack=> {
+        Customer.create({cashOnHand: 50})
+        .then(customer => {
+          request(app)
+          .post(`api/customer/items/${itemId}/purchases`)
+          .then(res => {
+            Customer.findById(customer.id).then(updatedCustomer => {
+              expect(updatedCustomer.cashOnHand).toBe(customer.cashOnHand - snack.price)
+            })
+          })
+        })
+      }
+    })
   });
 });
