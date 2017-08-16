@@ -14,9 +14,7 @@ describe("Purchase router", () => {
       }).then(snack => {
         return request(app)
           .post("/api/customer/items/126/purchases")
-          .then(res => {
-            expect(200);
-          })
+          .expect(200)
       });
     });
 

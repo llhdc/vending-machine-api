@@ -9,7 +9,7 @@ router.post('/api/customer/items/:itemId/purchases', (req, res) => {
   // Snack.findAll()
   // .then(result => {
   //   console.log(result);
-    res.send(result)
+    res.send(200)
   // })
   // Snack.findById(parseInt(req.params.itemId))
   // .then(snack => {
