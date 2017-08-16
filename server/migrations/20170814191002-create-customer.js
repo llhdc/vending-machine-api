@@ -8,10 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      vendor_id: {
+      cashOnHand: {
         type: Sequelize.INTEGER
       },
-      item_id: {
+      snackId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
